@@ -15,6 +15,11 @@ namespace SistemasDeTarefas.Repositorios
 
         public async Task<UsuarioModel> BuscarPorId(int id)
         {
+            if (id == null)
+            {
+                throw new Exception($"Usuário para o ID:{id} não foi encontrado no banco de Dados");
+            }
+            else
             return await _dbContext.Usuarios.FirstOrDefaultAsync(x => x.Id == id);
         }
 
