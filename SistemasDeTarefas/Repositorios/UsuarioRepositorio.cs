@@ -3,23 +3,19 @@ using SistemasDeTarefas.Data;
 using SistemasDeTarefas.Models;
 using SistemasDeTarefas.Repositorios.Interfaces;
 
+
 namespace SistemasDeTarefas.Repositorios
 {
     public class UsuarioRepositorio : IUsuarioRepositorio
     {
-        private readonly SistemaTarefasDBContext _dbContext;
-        public UsuarioRepositorio(SistemaTarefasDBContext sistemaTarefasDBContext)
+        private readonly SistemaTarefasDBContex _dbContext;
+        public UsuarioRepositorio(SistemaTarefasDBContex sistemaTarefasDBContext)
         {
             _dbContext = sistemaTarefasDBContext;
         }
 
         public async Task<UsuarioModel> BuscarPorId(int id)
         {
-            if (id == null)
-            {
-                throw new Exception($"Usuário para o ID:{id} não foi encontrado no banco de Dados");
-            }
-            else
             return await _dbContext.Usuarios.FirstOrDefaultAsync(x => x.Id == id);
         }
 

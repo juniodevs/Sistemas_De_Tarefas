@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using SistemasDeTarefas.Data;
+using SistemasDeTarefas.Repositorios;
 using SistemasDeTarefas.Repositorios.Interfaces;
 
 namespace SistemasDeTarefas
@@ -18,11 +19,11 @@ namespace SistemasDeTarefas
             builder.Services.AddSwaggerGen();
 
             builder.Services.AddEntityFrameworkSqlServer()
-                .AddDbContext<SistemaTarefasDBContext>(
+                .AddDbContext<SistemaTarefasDBContex>(
                 options => options.UseSqlServer(builder.Configuration.GetConnectionString("DataBase"))
                 );
 
-            builder.Services.AddScoped<IUsuarioRepositorio, IUsuarioRepositorio>();
+            builder.Services.AddScoped<IUsuarioRepositorio, UsuarioRepositorio>();
 
             var app = builder.Build();
 

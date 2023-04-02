@@ -4,10 +4,10 @@ using SistemasDeTarefas.Models;
 
 namespace SistemasDeTarefas.Data
 {
-    public class SistemaTarefasDBContext : DbContext
+    public class SistemaTarefasDBContex : DbContext
     {
-        public SistemaTarefasDBContext(DbContextOptions
-            <SistemaTarefasDBContext> options) : base(options)
+        public SistemaTarefasDBContex(DbContextOptions<SistemaTarefasDBContex> options) 
+            : base(options)
         {
         }
         public DbSet<UsuarioModel> Usuarios { get; set; }

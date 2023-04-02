@@ -1,4 +1,5 @@
 ﻿using SistemasDeTarefas.Models;
+using SistemasDeTarefas.Repositorios.Interfaces;
 
 namespace SistemasDeTarefas.Repositorios.Interfaces
 {
@@ -9,7 +10,5 @@ namespace SistemasDeTarefas.Repositorios.Interfaces
         Task<UsuarioModel> Adicionar(UsuarioModel usuario);
         Task<UsuarioModel> Atualizar(UsuarioModel usuario, int id);
         Task<bool> Apagar(int id);
-
-
     }
 }
