@@ -18,10 +18,11 @@ namespace SistemasDeTarefas
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
 
-            builder.Services.AddEntityFrameworkSqlServer()
-                .AddDbContext<SistemaTarefasDBContex>(
-                options => options.UseSqlServer(builder.Configuration.GetConnectionString("DataBase"))
-                );
+            string mySqlConnectionStr = builder.Configuration.GetConnectionString("DataBase");
+
+            builder.Services.AddDbContextPool<SistemaTarefasDBContex>
+                (options => options.UseMySql(mySqlConnectionStr,
+                ServerVersion.AutoDetect(mySqlConnectionStr)));
 
             builder.Services.AddScoped<IUsuarioRepositorio, UsuarioRepositorio>();
 
